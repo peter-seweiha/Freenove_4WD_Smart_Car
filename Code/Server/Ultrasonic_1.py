@@ -16,6 +16,7 @@ from datetime import datetime
 from ADC import *
 adc=Adc()
 
+
 class Ultrasonic:
     def __init__(self):        
         GPIO.setwarnings(False)        
@@ -71,11 +72,12 @@ class Ultrasonic:
             if R < 10 :
                 PWM.setMotorModel(-1500,-1500,1500,1500)
         else :
-            self.PWM.setMotorModel(600,600,600,600)
+            self.PWM.setMotorModel(800,800,800,800)
                 
     def run(self):
         self.PWM=Motor()
         self.pwm_S=Servo()
+        timestamp = datetime.now()
         for i in range(30,151,60):
                 self.pwm_S.setServoPwm('0',i)
                 time.sleep(0.2)
@@ -106,14 +108,18 @@ class Ultrasonic:
                 else:
                     R = self.get_distance()
                 self.run_motor(L,M,R)
+
+                time_difference = (datetime.now()-timestamp).total_seconds()
                 timestamp = datetime.now()
                 battery_level=adc.recvADC(2)
                 lighting = (adc.recvADC(0) + adc.recvADC(1))/2
-
+                    
                 print(timestamp)
+                print(time_difference)
                 print(battery_level)
                 print(lighting)
-                
+                print ('_____________________')
+
 
         
             
