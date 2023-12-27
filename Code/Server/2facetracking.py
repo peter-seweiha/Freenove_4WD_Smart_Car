@@ -8,6 +8,10 @@ from PCA9685 import PCA9685
 import math
 import cv2
 
+# buzzer
+from Buzzer import *
+buzzer=Buzzer()
+
 # the servo class
 class Servo:
     def __init__(self):
@@ -49,7 +53,7 @@ camera_config = picam2.create_still_configuration(main={"size": (320, 180)}, lor
 picam2.configure(camera_config)
 
 #Start the preview window and then start the camera.
-picam2.start_preview(Preview.QTGL)
+#picam2.start_preview(Preview.QTGL)
 picam2.start()
 
 # pause for 2 seconds
@@ -60,10 +64,15 @@ face_cascade = cv2.CascadeClassifier(r'haarcascade_frontalface_default.xml')
 
 servo_angle = 90
 
+# indicate program start
+buzzer.run('1')
+time.sleep(0.2)
+buzzer.run('0')
+
 # ___ code to detect & follow face___________________
 
-for i in range(20):
-    time.sleep(0.2)
+for i in range(100):
+    time.sleep(0.1)
 
     faces_detected = 0
     while faces_detected <1 :
@@ -123,9 +132,15 @@ for i in range(20):
     pwm.setServoPwm('0',servo_angle)
 
 
-
-time.sleep(5)
 picam2.stop()
 picam2.stop_preview()
-
+pwm.setServoPwm('0',90)
+# indicate program end
+buzzer.run('1')
+time.sleep(0.1)
+buzzer.run('0')
+time.sleep(0.1)
+buzzer.run('1')
+time.sleep(0.1)
+buzzer.run('0')
 
