@@ -55,65 +55,71 @@ picam2.start()
 # pause for 2 seconds
 time.sleep(2)
 
+# Load the pre-trained Haar Cascade classifier for face detection
+face_cascade = cv2.CascadeClassifier(r'haarcascade_frontalface_default.xml')
 
-# take an image
-picam2.capture_file(f"test.jpg")
 
 
 # ___ code to detect & follow face___________________
 
-# Load the pre-trained Haar Cascade classifier for face detection
-face_cascade = cv2.CascadeClassifier(r'haarcascade_frontalface_default.xml')
+for i in range(1):
+    time.sleep(0.2)
 
-# Read the image
-image = cv2.imread('test.jpg')
+    faces_detected = 0
+    while faces_detected <1 :
+        # take an image
+        picam2.capture_file(f"test.jpg")
 
-# Convert the image to grayscale for better processing
-gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        # Read the image in open cv
+        image = cv2.imread('test.jpg')
 
-# Detect faces in the image
-faces = face_cascade.detectMultiScale(gray_image, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+        # Convert the image to grayscale for better processing
+        gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-# Draw rectangles around the detected faces
-for (x, y, w, h) in faces:
-    cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 2)
+        # Detect faces in the image
+        faces = face_cascade.detectMultiScale(gray_image, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
 
-# use print to understand some functions:
+        # Draw rectangles around the detected faces
+        for (x, y, w, h) in faces:
+            cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 2)
 
-print(len(faces))
+        faces_detected = len(faces)
+    # use print to understand some functions:
 
-print (x)
-print (y)
-print (w)
-print (h)
+    print(len(faces))
 
-#save image with frame
-cv2.imwrite("output_image_with_faces.jpg", image)
+    print (x)
+    print (y)
+    print (w)
+    print (h)
+
+    #save image with frame
+    cv2.imwrite("output_image_with_faces.jpg", image)
 
 
-## Calculate the motion
-# get the x value for face centre (in pixels)
-x_face = int(x+(w/2))
+    ## Calculate the motion
+    # get the x value for face centre (in pixels)
+    x_face = int(x+(w/2))
 
-# get the x value for image centre (in pixels)
-x_centre = 160 # since this is have the pixel value for the image
+    # get the x value for image centre (in pixels)
+    x_centre = 160 # since this is have the pixel value for the image
 
-# Calculate the difference
-x_diff = x_face - x_centre
+    # Calculate the difference
+    x_diff = x_face - x_centre
 
-#calculate the Sin value
-sin_value = x_diff/226.27  # calculated value using a case with the angle = 45 degrees
+    #calculate the Sin value
+    sin_value = x_diff/226.27  # calculated value using a case with the angle = 45 degrees
 
-# determine the angle the servo needs to move
-angle_in_radians = math.asin(sin_value)
-# Convert radians to degrees for the result
-angle_in_degrees = math.degrees(angle_in_radians)
+    # determine the angle the servo needs to move
+    angle_in_radians = math.asin(sin_value)
+    # Convert radians to degrees for the result
+    angle_in_degrees = math.degrees(angle_in_radians)
 
-angle_in_degrees = int(angle_in_degrees)
-print(f'angle to move {angle_in_degrees}')
+    angle_in_degrees = int(angle_in_degrees)
+    print(f'angle to move {angle_in_degrees}')
 
-## move the Servo
-pwm.setServoPwm('0',(90 + angle_in_degrees))
+    ## move the Servo
+    pwm.setServoPwm('0',(90 + angle_in_degrees))
 
 
 
