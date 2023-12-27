@@ -34,8 +34,8 @@ if __name__ == '__main__':
     pwm=Servo()
     while True:
         try :
-            pwm.setServoPwm('0',90)
-            pwm.setServoPwm('1',90)
+            pwm.setServoPwm('0',90) # more = right
+            pwm.setServoPwm('1',90) # more = down
         except KeyboardInterrupt:
             print ("\nEnd of program")
             break
