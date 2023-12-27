@@ -62,7 +62,7 @@ face_cascade = cv2.CascadeClassifier(r'haarcascade_frontalface_default.xml')
 
 # ___ code to detect & follow face___________________
 
-for i in range(1):
+for i in range(20):
     time.sleep(0.2)
 
     faces_detected = 0
