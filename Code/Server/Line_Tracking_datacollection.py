@@ -27,8 +27,8 @@ class Line_Tracking:
 
     def run(self):
         self.data = []
+        i = 0
         while True:
-            i = 0
             self.LMR=0x00
             if GPIO.input(self.IR01)==True:
                 self.LMR=(self.LMR | 4)
