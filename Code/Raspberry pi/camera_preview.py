@@ -21,7 +21,8 @@ rows = []
 for i in range(5):
     im = picam2.capture_array()
     greyed_image = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
-    img_as_json = json.dumps(greyed_image)
+    img_as_list = greyed_image.tolist()
+    img_as_json = json.dumps(img_as_list)
     rows.append({'i': i, 'img':img_as_json  })
     
 output = pd.DataFrame(rows)
