@@ -1,4 +1,4 @@
-[![Footer](images/linkedin_background.png)]
+![Footer](images.jpeg)
 
 
 # Building Machine Learning applications using Freenove Smart Car Kit
