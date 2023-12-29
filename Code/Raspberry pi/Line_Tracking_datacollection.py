@@ -4,6 +4,7 @@ import RPi.GPIO as GPIO
 from datetime import datetime
 from picamera2 import Picamera2, Preview
 import pandas as pd
+from servo import Servo
 
 class Line_Tracking:
     def __init__(self):
@@ -36,7 +37,7 @@ class Line_Tracking:
                 self.LMR=(self.LMR | 2)
             if GPIO.input(self.IR03)==True:
                 self.LMR=(self.LMR | 1)
-            timestamp = datetime.now()
+            timestamp = datetime.now().strftime("%Y-%m-%d %H_%M_%S.%f")
             self.picam2.capture_file(f"{i}-{timestamp}.jpg")
             if self.LMR==2:
                 PWM.setMotorModel(800,800,800,800)
@@ -62,6 +63,11 @@ class Line_Tracking:
 
 
 infrared=Line_Tracking()
+
+# set the camera direction in the middle using servo
+pwm=Servo()
+pwm.setServoPwm('0',90)
+
 # Main program logic follows:
 if __name__ == '__main__':
     print ('Program is starting ... ')
