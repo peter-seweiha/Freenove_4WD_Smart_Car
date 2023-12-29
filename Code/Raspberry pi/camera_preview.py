@@ -2,6 +2,7 @@ from picamera2 import Picamera2, Preview
 import time
 import cv2
 import pandas as pd
+import json
 
 
 # Create a PiCamera object
@@ -20,7 +21,8 @@ rows = []
 for i in range(5):
     im = picam2.capture_array()
     greyed_image = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
-    rows.append({'i': i, 'img':greyed_image  })
+    img_as_json = json.dumps(greyed_image)
+    rows.append({'i': i, 'img':img_as_json  })
     
 output = pd.DataFrame(rows)
 output.to_csv('output.csv', index= False)
