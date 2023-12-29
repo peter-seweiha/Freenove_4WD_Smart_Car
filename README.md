@@ -2,11 +2,11 @@
 
 
 # Building Machine Learning applications using Freenove Smart Car Kit
-Repository containing a portfolio of Data Science projects and blogs completed for academic, self-learning, and professional purposes presented in the form of Jupyter Notebooks.
+In this repository, I'll be ueing Raspberry pi, python, and the Freenove car kit to explore some machine learning applications.
 
 
-### My Toolbox
-- **Python**: NumPy, Pandas, Seaborn, Matplotlib, Scipy, scikit-learn, TensorFlow, keras
+### Projects 
+- **Face Tracking**: NumPy, Pandas, Seaborn, Matplotlib, Scipy, scikit-learn, TensorFlow, keras
 
 
 <br/><br/>
@@ -26,28 +26,3 @@ Repository containing a portfolio of Data Science projects and blogs completed f
 2. **Forcast the no of daily customers for a restaurant chain (Time Series Analysis)** [NoteBook](https://github.com/peter-seweiha/peter-seweiha.github.io/blob/master/projects/8_TimeSeries/TimeSeries%20Project.ipynb)  
 *Here I compared the performance of an ARIMA based model, FaceBook prophet, and a traditional XGB regression. Imagine which performed the best!*
 
-
-
-<br/><br/>
-
-### My Blogs
-- **How to teach Artificial Intellegence to play Games**  [NoteBook](https://github.com/peter-seweiha/peter-seweiha.github.io/blob/master/projects/9_Reinforcement%20Learning/Frozen%20Lake%208x8.ipynb)  
-Computer learning how to play a game of Frozen Lake using Reinforcement Learning 
-
-- **Intro. to solving Differential Equations**  [NoteBook](https://github.com/peter-seweiha/peter-seweiha.github.io/blob/master/blogs/Differential%20equations/An%20introduction%20to%20differential%20equations.ipynb)  
-Quick run through Differential Equations with a few simple examples using code
-
-- **My approach to Kaggle's Titanic dataset**  [NoteBook](https://github.com/peter-seweiha/peter-seweiha.github.io/blob/master/projects/3_The%20Titanic%20Dataset/The%20Titanic%20dataset.ipynb)  
-A solution focused on feature engineering and a hyperparameter tuning (top 8% on Kaggle's Leaderboard!)
-
-- **Intro. to Natural Language Processing (NLP)**  [NoteBook](https://github.com/peter-seweiha/peter-seweiha.github.io/blob/master/projects/4_NLP/%20Natural%20Language%20Processing.ipynb)  
-Classify a restaurant's customer text reviews into positive/negative  
-
-- **Intro. to Artificial Neural Networks (ANN)**  [NoteBook](https://github.com/peter-seweiha/peter-seweiha.github.io/blob/master/projects/5_ANN/Churn%20Prediction%20using%20Deep%20Learning.ipynb)  
-Bank customers' churn prediction  
-
-- **Intro. to Unsupervised Learning - K.means clustering**  [NoteBook](https://github.com/peter-seweiha/peter-seweiha.github.io/blob/master/projects/6_k-means/K-means%20clustering.ipynb)  
-Categorising Shopping mall customers based on their income and spending habits
-
-- **Intro. to Unsupervised Learning - Dimensionality Reduction (PCA)**  [NoteBook](https://github.com/peter-seweiha/peter-seweiha.github.io/blob/master/projects/7_PCA/Principal%20Component%20Analysis%20(PCA).ipynb)  
-Predicting if a customer group will like a new wine based on product parameters
