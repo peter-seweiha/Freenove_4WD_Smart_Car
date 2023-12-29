@@ -11,7 +11,8 @@ In this repository, I'll be ueing Raspberry pi, python, and the Freenove car kit
    - [Code Folder](link)
   
 2. **Machine Learning based Line Follower**
-   * text description*
+   * The Freenove car kit comes with a program to follow a black line using the infrared sensor at the front. In this experiment I'll be using the infrared to train a Machine learning model to follow the kine based on camera feed. Afterwards I'll work to enhance the model to follow the line faster than an infrared-based system can do*
+     
      image
      
 
