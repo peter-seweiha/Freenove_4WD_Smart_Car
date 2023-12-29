@@ -1,3 +1,5 @@
+# I needed to slow this one down to compansate for the slowness of responding due to the extra data collection activities in the code
+
 import time
 from Motor import *
 import RPi.GPIO as GPIO
@@ -40,19 +42,19 @@ class Line_Tracking:
             timestamp = datetime.now().strftime("%Y-%m-%d %H_%M_%S.%f")
             self.picam2.capture_file(f"{i}-{timestamp}.jpg")
             if self.LMR==2:
-                PWM.setMotorModel(800,800,800,800)
+                PWM.setMotorModel(500,500,500,500)
                 motion = 'SlowForward'
             elif self.LMR==4:
-                PWM.setMotorModel(-1500,-1500,2500,2500)
+                PWM.setMotorModel(-1000,-1000,1750,1750)
                 motion = 'SoftLeft'
             elif self.LMR==6:
-                PWM.setMotorModel(-2000,-2000,4000,4000)
+                PWM.setMotorModel(-1500,-1500,2500,2500)
                 motion = 'HardLeft'
             elif self.LMR==1:
-                PWM.setMotorModel(2500,2500,-1500,-1500)
+                PWM.setMotorModel(1750,1750,-1000,-1000)
                 motion = 'SoftRight'
             elif self.LMR==3:
-                PWM.setMotorModel(4000,4000,-2000,-2000)
+                PWM.setMotorModel(2500,2500,-1500,-1500)
                 motion = 'HardRight'
             elif self.LMR==7:
                 #pass
@@ -66,7 +68,7 @@ infrared=Line_Tracking()
 
 # set the camera direction in the middle using servo
 pwm=Servo()
-pwm.setServoPwm('0',90)
+pwm.setServoPwm('0',98) # I observed this is the value of the exact middle
 
 # Main program logic follows:
 if __name__ == '__main__':
@@ -76,4 +78,5 @@ if __name__ == '__main__':
     except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program  will be  executed.
         PWM.setMotorModel(0,0,0,0)
         output = pd.DataFrame(infrared.data)
-        output.to_csv('data_output.csv', index = False)
+        timestamp_file = datetime.now().strftime("%Y-%m-%d %H_%M_%S.%f")
+        output.to_csv(f'data_output{timestamp_file}.csv', index = False)
