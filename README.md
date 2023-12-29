@@ -6,7 +6,11 @@ In this repository, I'll be ueing Raspberry pi, python, and the Freenove car kit
 
 
 ### Projects 
-- **Face Tracking**: NumPy, Pandas, Seaborn, Matplotlib, Scipy, scikit-learn, TensorFlow, keras
+1. **Face Tracking**: Raspberry pi, Freenove car, opencv  
+   *Moving the servo to track any face along the X axis*
+   - [Code Folder] link
+  
+2. **Machine Learning based Line Follower**
 
 
 <br/><br/>
