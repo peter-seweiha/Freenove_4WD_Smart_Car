@@ -15,7 +15,8 @@ In this repository, I'll be ueing Raspberry pi, python, and the Freenove car kit
      
    *The Freenove car kit comes with a program to follow a black line using the infrared sensor at the front. In this experiment I'll be using the infrared to train a Machine learning model to follow the kine based on camera feed. Afterwards I'll work to enhance the model to follow the line faster than an infrared-based system can do*
     1. Mimic infrared  
-       - Gather images and navigation data while infrared is driving the car  
+       - Gather images and navigation data while infrared is driving the car
+            - learning 1: Infrared program is slowed by the data collection I had to slow down all speeds
        - Build, train, and test a Neural Network to drive the car  
        - Gather more data to teach the neural network any missing skills i.e. navigating sharp corners ..etc  
 
