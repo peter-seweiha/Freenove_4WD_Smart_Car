@@ -1,21 +1,13 @@
-[![Footer](images/linkedin_background.png)](https://peter-seweiha.github.io/)
-
->    **Peter Seweiha**  
->    *Data Scientist & Business Improvement Specialist*  
->    [![LinkedIn](images/linkedin14.png)](https://www.linkedin.com/in/pseweiha/) [LinkedIn](https://www.linkedin.com/in/pseweiha/)  
->    [![GitHub](images/github14.png)](https://github.com/peter-seweiha) [GitHub](https://github.com/peter-seweiha)
+[![Footer](images/linkedin_background.png)]
 
 
-# Data Science Portfolio
+# Building Machine Learning applications using Freenove Smart Car Kit
 Repository containing a portfolio of Data Science projects and blogs completed for academic, self-learning, and professional purposes presented in the form of Jupyter Notebooks.
 
 
 ### My Toolbox
 - **Python**: NumPy, Pandas, Seaborn, Matplotlib, Scipy, scikit-learn, TensorFlow, keras
-- **Data Processing**: Exploratory Data Analysis, Data Visualisation, Feature Engineering, Feature Selection
-- **Machine Learning**: Linear Regression, Logistic Regression, KNN, Random Forest, Gradient Boosting, Support Vector Machine (SVM), Naive Bayes, Principal Component Analysis (PCA), K-means, Artificial Neural Networks
-- **Power BI**: Interactive Dashboards
-- **Minitab (SPC)**: Control Charts, Process Capability Study, Measurement System Analysis(MSA), ANOVA, Hypothesis Testing, Time Series Analysis
+
 
 <br/><br/>
 
