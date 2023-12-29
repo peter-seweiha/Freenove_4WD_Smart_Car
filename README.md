@@ -17,7 +17,8 @@ In this repository, I'll be ueing Raspberry pi, python, and the Freenove car kit
     1. Mimic infrared  
        - Gather images and navigation data while infrared is driving the car
             - learning 1: Infrared program is slowed by the data collection I had to slow down all speeds
-       - Build, train, and test a Neural Network to drive the car  
+       - Build, train, and test a Neural Network to drive the car
+           - How can we inform the CNN about the aequence of images which makes sense in this scenario - thinking of changing the value of one pixel to represent the sequence or 2 revolving pixels
        - Gather more data to teach the neural network any missing skills i.e. navigating sharp corners ..etc  
 
     2. Enhancements  
