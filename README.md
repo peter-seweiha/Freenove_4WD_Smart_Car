@@ -35,5 +35,7 @@ In this repository, I'll be ueing Raspberry pi, python, and the Freenove car kit
 
 <br/><br/>
 
-### Next section
+### Ideas to try:  
+- explore capture array from picamera2: https://github.com/raspberrypi/picamera2/blob/main/examples/opencv_face_detect.py
+- 
 
