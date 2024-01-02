@@ -1,0 +1,8 @@
+motion,motion_encoding
+Stop,0
+SlowForward,1
+FastForward,2
+SoftLeft,3
+HardLeft,4
+SoftRight,5
+HardRight,6
