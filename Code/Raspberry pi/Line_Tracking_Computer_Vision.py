@@ -25,13 +25,13 @@ class Line_Tracking:
         # configure the camera
         self.picam2 = Picamera2()
         #  Create a new object, camera_config and use it to set the still image resolution (main) to 1920 x 1080. and a lowres image with a size of 640 x 480. This lowres image is used as the preview image when framing a shot.
-        camera_config = self.picam2.create_still_configuration(main={"size": (54, 30)}, lores={"size": (54, 30)}, display="lores")
+        camera_config = self.picam2.create_still_configuration(main={"size": (162, 90)}, lores={"size": (162, 90)}, display="lores")
         #Load the configuration.
         self.picam2.configure(camera_config)
         self.picam2.start_preview(Preview.QTGL)
         self.picam2.start()
         # pause for 2 seconds
-        time.sleep(2)   
+#         time.sleep(2)   
 
     def run(self):
         self.data = []
@@ -50,7 +50,8 @@ class Line_Tracking:
 
             # Capture image
             im = self.picam2.capture_array()
-            greyed_image = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+            resized_image = cv2.resize(im, (54, 30))
+            greyed_image = cv2.cvtColor(resized_image, cv2.COLOR_BGR2GRAY)
             img_as_array = np.array(greyed_image, dtype=np.float32)/255
             # Reshape the array to match Tensorflow expectations
             img_as_array = img_as_array.reshape(1, 30, 54, 1)
@@ -81,7 +82,8 @@ class Line_Tracking:
                 PWM.setMotorModel(0,0,0,0)
                 motion = 'Stop'
             
-            img_as_json = json.dumps(greyed_image)
+            img_as_list = greyed_image.tolist()
+            img_as_json = json.dumps(img_as_list)
             self.data.append({'motion': motion, 'timestamp': timestamp, 'i':i, 'LMR':self.LMR,'model_prediction': self.model_prediction ,'img': img_as_json })
             i = i+1
 
