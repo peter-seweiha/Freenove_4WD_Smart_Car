@@ -46,7 +46,7 @@ class Line_Tracking:
                 self.LMR=(self.LMR | 1)
             
             # capture time stamp
-            timestamp = datetime.now().strftime("%Y-%m-%d %H_%M_%S.%f")
+            timestamp = datetime.now()
 
             # Capture image
             im = self.picam2.capture_array()
