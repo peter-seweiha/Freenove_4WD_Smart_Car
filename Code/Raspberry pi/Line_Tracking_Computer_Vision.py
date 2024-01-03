@@ -28,6 +28,7 @@ class Line_Tracking:
         camera_config = self.picam2.create_still_configuration(main={"size": (54, 30)}, lores={"size": (54, 30)}, display="lores")
         #Load the configuration.
         self.picam2.configure(camera_config)
+        self.picam2.start_preview(Preview.QTGL)
         self.picam2.start()
         # pause for 2 seconds
         time.sleep(2)   
@@ -50,11 +51,14 @@ class Line_Tracking:
             # Capture image
             im = self.picam2.capture_array()
             greyed_image = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
-            img_as_list = greyed_image.tolist()
-            img_as_array = np.array(img_as_list)
+            img_as_array = np.array(greyed_image, dtype=np.float32)/255
+            # Reshape the array to match Tensorflow expectations
+            img_as_array = img_as_array.reshape(1, 30, 54, 1)
 
             # Use CNN to predict the suitable driving action
-            model_prediction = model.predict(np.expand_dims(img_as_array/255, 0))
+            interpreter.set_tensor(input_details[0]['index'], img_as_array)
+            interpreter.invoke()
+            model_prediction = interpreter.get_tensor(output_details[0]['index'])
             self.model_prediction = np.argmax(model_prediction)
 
             if self.model_prediction==0:
@@ -77,8 +81,8 @@ class Line_Tracking:
                 PWM.setMotorModel(0,0,0,0)
                 motion = 'Stop'
             
-            img_as_json = json.dumps(img_as_list)
-            self.data.append({'motion': motion, 'timestamp': timestamp, 'i':i, 'LMR':self.LMR, 'img': img_as_json })
+            img_as_json = json.dumps(greyed_image)
+            self.data.append({'motion': motion, 'timestamp': timestamp, 'i':i, 'LMR':self.LMR,'model_prediction': self.model_prediction ,'img': img_as_json })
             i = i+1
 
 
@@ -89,6 +93,12 @@ pwm=Servo()
 pwm.setServoPwm('0',98) # I observed this is the value of the exact middle
 
 # load the model file using TensorFlow lite
+interpreter = tf.lite.Interpreter('computer_vision_driver.tflite')
+interpreter.allocate_tensors()
+
+# Get input and output details
+input_details = interpreter.get_input_details()
+output_details = interpreter.get_output_details()
 
 
 
