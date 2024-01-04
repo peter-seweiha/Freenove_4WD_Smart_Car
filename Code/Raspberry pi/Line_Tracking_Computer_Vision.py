@@ -62,22 +62,22 @@ class Line_Tracking:
             model_prediction = interpreter.get_tensor(output_details[0]['index'])
             self.model_prediction = np.argmax(model_prediction)
 
-            if self.model_prediction==0:
+            if self.model_prediction==1:
                 PWM.setMotorModel(500,500,500,500)
                 motion = 'SlowForward'
-            elif self.model_prediction==1:
+            elif self.model_prediction==2:
                 PWM.setMotorModel(-1000,-1000,1750,1750)
                 motion = 'SoftLeft'
             elif self.model_prediction==6: # doesn't exist for now
                 PWM.setMotorModel(-1500,-1500,2500,2500)
                 motion = 'HardLeft'
-            elif self.model_prediction==2:
+            elif self.model_prediction==3:
                 PWM.setMotorModel(1750,1750,-1000,-1000)
                 motion = 'SoftRight'
-            elif self.model_prediction==3:
+            elif self.model_prediction==8: # doesn't exist for now
                 PWM.setMotorModel(2500,2500,-1500,-1500)
                 motion = 'HardRight'
-            elif self.model_prediction==7: # doesn't exist for now
+            elif self.model_prediction==0: # doesn't exist for now
                 #pass
                 PWM.setMotorModel(0,0,0,0)
                 motion = 'Stop'
