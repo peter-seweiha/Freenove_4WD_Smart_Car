@@ -63,7 +63,7 @@ class Line_Tracking:
             self.model_prediction = np.argmax(model_prediction)
 
             if self.model_prediction==1:
-                PWM.setMotorModel(500,500,500,500)
+                PWM.setMotorModel(700,700,700,700)
                 motion = 'SlowForward'
             elif self.model_prediction==2:
                 PWM.setMotorModel(-1000,-1000,1750,1750)
