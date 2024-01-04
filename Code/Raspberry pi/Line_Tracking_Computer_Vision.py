@@ -95,7 +95,7 @@ pwm=Servo()
 pwm.setServoPwm('0',98) # I observed this is the value of the exact middle
 
 # load the model file using TensorFlow lite
-interpreter = tf.lite.Interpreter('computer_vision_driver.tflite')
+interpreter = tf.lite.Interpreter('computer_vision_driver_v2.tflite')
 interpreter.allocate_tensors()
 
 # Get input and output details
