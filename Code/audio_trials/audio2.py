@@ -10,29 +10,29 @@ language = 'en'
 
 # create functions for motor movement
 def forward():
-    PWM.setMotorModel(700,700,700,700)
-    time.sleep(0.5)
+    PWM.setMotorModel(800,800,800,800)
+    time.sleep(1)
     PWM.setMotorModel(0,0,0,0)
     message = 'moved forward'
     return message
 
 def backward():
-    PWM.setMotorModel(-700,-700,-700,-700)
-    time.sleep(0.5)
+    PWM.setMotorModel(-800,-800,-800,-800)
+    time.sleep(1)
     PWM.setMotorModel(0,0,0,0)
     message = 'moved backward'
     return message
 
 def left():
     PWM.setMotorModel(-2000,-2000,4000,4000)
-    time.sleep(0.5)
+    time.sleep(1)
     PWM.setMotorModel(0,0,0,0)
     message = 'moved left'
     return message
 
 def right():
     PWM.setMotorModel(4000,4000,-2000,-2000)
-    time.sleep(0.5)
+    time.sleep(1)
     PWM.setMotorModel(0,0,0,0)
     message = 'moved right'
     return message
@@ -73,19 +73,19 @@ def run_program():
         except sr.RequestError as e:
             print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
-        if "car" in phrase:  # name of the bot
-            if 'forward' in phrase:
-                response = forward()
-            elif 'backward' in phrase:
-                response = backward()
-            elif 'left' in phrase:
-                response = left(phrase)
-            elif 'right' in phrase:
-                response = right(phrase)
-            elif 'dismissed' in phrase:
-                break
-            else:
-                pass
+        
+        if 'forward' in phrase:
+            response = forward()
+        elif 'backward' in phrase:
+            response = backward()
+        elif 'left' in phrase:
+            response = left()
+        elif 'right' in phrase:
+            response = right()
+        elif 'dismissed' in phrase:
+            break
+        else:
+            pass
 
             print(response)
 
@@ -104,3 +104,4 @@ print ('Program is starting ... ')
 try:
     run_program()
 except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
+    print('Program Ended')
