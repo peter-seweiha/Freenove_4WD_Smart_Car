@@ -1,6 +1,6 @@
 import speech_recognition as sr
-# from gtts import gTTS 
-# import os 
+from gtts import gTTS 
+import os 
 from Motor import *
 import time
 
@@ -38,28 +38,9 @@ def right():
     return message
 
 
-
-# def switch_light(phrase):
-#     if 'on' in phrase:
-#         try:
-#             ser.write(b"on\n")
-#             message = 'Light is On'
-#         except:
-#             pass
-#     elif 'off' in phrase:
-#         try:
-#             ser.write(b"off\n")
-#             message = 'Light is Off'
-#         except:
-#             pass
-#     else:
-#         message = 'I dont understand what to do with the light'
-
-#     return message
-
 def run_program():
     while True:
-        response = ''
+        message = ''
         phrase = ''
         with sr.Microphone() as source:
             print("Say something!")
@@ -75,29 +56,30 @@ def run_program():
 
         
         if 'forward' in phrase:
-            response = forward()
+            message = forward()
         elif 'backward' in phrase:
-            response = backward()
+            message = backward()
         elif 'left' in phrase:
-            response = left()
+            message = left()
         elif 'right' in phrase:
-            response = right()
+            message = right()
         elif 'dismissed' in phrase:
             break
         else:
             pass
 
-            print(response)
+            print(message)
 
-            # Text to Speech part
-            # try:
-            #     myobj = gTTS(text=response, lang=language, slow=False) 
-
-            #     myobj.save("response.mp3") 
-
-            #     os.system("afplay response.mp3") 
-            # except:
-            #     pass
+        #Text to Speech part
+        try:
+            # get google txt t speech and save mp3 file
+            myobj = gTTS(text=message, lang=language, slow=False) 
+            myobj.save("message.mp3") 
+            
+            # ply mp3 file on dummy vlc and close it down
+            os.system("vlc -I dummy message.mp3 vlc://quit")
+        except:
+            pass
 
 
 print ('Program is starting ... ')
