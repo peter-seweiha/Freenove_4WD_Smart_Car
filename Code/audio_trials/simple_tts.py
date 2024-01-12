@@ -1,13 +1,13 @@
 from gtts import gTTS 
 import os 
 
-language = 'en'
-message = 'how are you today mate? I hope you are doing very well!'
+language = 'en' # 'en'
+message = "  yo yo saalwa, party in the house"
 
 
 # Text to Speech part
 try:
-    myobj = gTTS(text=message, lang=language, slow=False, tld= 'co.uk') 
+    myobj = gTTS(text=message, lang=language, slow=False, tld= 'us') 
 
     myobj.save("message.mp3") 
 

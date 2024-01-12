@@ -7,7 +7,7 @@ import openai
 from openai import OpenAI
 
 # Paste OpenAI API key
-os.environ["OPENAI_API_KEY"] = getpass.getpass("OpenAI API Key:")
+os.environ["OPENAI_API_KEY"] = ''
 
 
 r = sr.Recognizer()
@@ -17,18 +17,21 @@ language = 'en'
 # create functions to get a message from ChatGPT
 
 def get_message(phrase):
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-        {"role": "system", "content": "you are a babysitter chatting with a 9 years old baby girl named 'Noor', try to be chatty, funny and a bit cheecky when you respond to her questions and use her name when you get a chance  "},
-        {"role": "assistant", "content": "answer in less than 30 words"},
-        {"role": "user", "content": phrase}
-        ]
-    )
-    message = response["choices"][0]["message"]["content"]
+    client = OpenAI()
+    
+    chat_completion =  client.chat.completions.create(
+
+    model='gpt-3.5-turbo-1106',
+    messages = [
+        {'role': 'system', 'content': "you are an a chatting friend to a 9 years old girl named 'Noor', try to be chatty, funny and a bit cheecky when you respond to her questions and use her name when you get a chance  "},
+        {'role': 'assistant', 'content':"answer in less than 30 words" },
+        {'role': 'user', 'content': phrase}
+
+    ])
+    
+    message = chat_completion.choices[0].message.content
+    print(message)
     return message
-
-
 
 
 def run_program():
