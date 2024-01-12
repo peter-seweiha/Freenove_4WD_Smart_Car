@@ -23,7 +23,7 @@ def get_message(phrase):
 
     model='gpt-3.5-turbo-1106',
     messages = [
-        {'role': 'system', 'content': "you are an a chatting friend to a 9 years old girl named 'Noor', try to be chatty, funny and a bit cheecky when you respond to her questions and use her name when you get a chance  "},
+        {'role': 'system', 'content': "you are an a chatting friend to a xx years old girl named 'xx', try to be chatty, funny and a bit cheecky when you respond to her questions and use her name when you get a chance  "},
         {'role': 'assistant', 'content':"answer in less than 30 words" },
         {'role': 'user', 'content': phrase}
 
